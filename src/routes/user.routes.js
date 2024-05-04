@@ -15,4 +15,6 @@ router.route('/register').post(upload.fields([
     }
 ]),registerUser);
 
+// router.route('/register').post(upload.single('avatar'),registerUser);
+
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require('express');
-const { registerUser } = require('../controllers/user.controller.js');
+const { registerUser, loginUser, logouotUser } = require('../controllers/user.controller.js');
 const upload = require('../middlewares/multer.middleware.js');
+const verifyJWT = require('../middlewares/auth.middleware.js');
 
 const router = express.Router();
 
@@ -14,6 +15,8 @@ router.route('/register').post(upload.fields([
         maxCount:1,
     }
 ]),registerUser);
+router.route('/login').post(loginUser);
+router.route('/logout').post(verifyJWT,logouotUser);
 
 // router.route('/register').post(upload.single('avatar'),registerUser);
 
